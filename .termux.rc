@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Load iptables rules on Termux startup
+if command -v proot-distro &>/dev/null; then
+  $PREFIX/bin/proot-distro login $DISTRO -- "iptables-restore < $IPTABLES_SAVE_PATH"
+fi

@@ -1,0 +1,16 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "setup": "sh ./scripts/setup.sh",
+    "start": "node index.js",
+    "dev": "nodemon --watch . --ext js,json --delay 250ms index.js"
+  },
+  "dependencies": {
+    "firebase-frameworks": "^0.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}

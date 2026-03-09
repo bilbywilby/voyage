@@ -1,0 +1,10 @@
+pillow
+pytesseract
+opencv-python
+numpy
+jinja2
+# Development dependencies
+flake8
+black
+isort
+pytest

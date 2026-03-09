@@ -1,0 +1,20 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "preinstall": "node -e \"try{require('fs').mkdirSync('node_modules/.bin',{recursive:true})}catch(e){}\"",
+    "setup": "sh ./scripts/setup.sh",
+    "generate": "npx prisma generate || true",
+    "migrate": "npx prisma migrate deploy || true",
+    "seed": "node prisma/seed.js || true",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "firebase-frameworks": "^0.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}

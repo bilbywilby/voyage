@@ -1,0 +1,313 @@
+2025-11-16T19:54:20Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T19:54:20Z - Installing utility packages...
+2025-11-16T19:54:20Z - Already present: termux-tools
+2025-11-16T19:54:21Z - Installing: proot-distro
+2025-11-16T19:54:25Z - Installing: tldr
+2025-11-16T19:54:26Z - ERROR: Failed to install tldr — continuing
+2025-11-16T19:54:26Z - Installing: man
+2025-11-16T19:54:30Z - Installing: htop
+2025-11-16T19:54:34Z - Already present: neofetch
+2025-11-16T19:54:34Z - Installing: fish
+2025-11-16T19:54:40Z - Already present: git
+2025-11-16T19:54:40Z - Already present: termux-api
+2025-11-16T19:55:32Z - Already present: openssh
+2025-11-16T19:55:32Z - Installing: termux-services
+2025-11-16T19:55:36Z - Installing: cronie
+2025-11-16T19:55:39Z - Installing: fail2ban
+2025-11-16T19:55:40Z - ERROR: fail2ban failed
+2025-11-16T19:55:40Z - Aborting due to critical failure
+2025-11-16T19:56:39Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T19:56:39Z - Installing utility packages...
+2025-11-16T19:56:39Z - Already present: termux-tools
+2025-11-16T19:56:39Z - Already present: proot-distro
+2025-11-16T19:56:39Z - Installing: tldr
+2025-11-16T19:56:41Z - ERROR: Failed to install tldr — continuing
+2025-11-16T19:56:41Z - Installing: man
+2025-11-16T19:56:43Z - Already present: htop
+2025-11-16T19:56:43Z - Already present: neofetch
+2025-11-16T19:56:43Z - Already present: fish
+2025-11-16T19:56:43Z - Already present: git
+2025-11-16T19:56:43Z - Already present: termux-api
+2025-11-16T19:56:43Z - Installing development packages...
+2025-11-16T19:56:43Z - Already present: python
+2025-11-16T19:56:43Z - Already present: nodejs
+2025-11-16T19:56:44Z - Already present: golang
+2025-11-16T19:56:44Z - Already present: clang
+2025-11-16T19:56:44Z - Already present: make
+2025-11-16T19:56:44Z - Installing: neovim
+2025-11-16T19:57:07Z - Installing: build-essential
+2025-11-16T19:57:23Z - --- Installing Utilities & Shell ---
+2025-11-16T19:57:23Z - Already present: termux-tools
+2025-11-16T19:57:23Z - Already present: proot-distro
+2025-11-16T19:57:23Z - Installing: tldr
+2025-11-16T19:57:24Z - ERROR: tldr failed
+2025-11-16T19:57:24Z - Installing: man
+2025-11-16T19:57:25Z - Already present: htop
+2025-11-16T19:57:26Z - Already present: neofetch
+2025-11-16T19:57:26Z - Already present: fish
+2025-11-16T19:57:26Z - Already present: git
+2025-11-16T19:57:26Z - Already present: termux-api
+2025-11-16T19:57:26Z - --- Installing Development & Build Tools ---
+2025-11-16T19:57:26Z - Already present: python
+2025-11-16T19:57:26Z - Installing: pip
+2025-11-16T19:57:27Z - ERROR: pip failed
+2025-11-16T19:57:27Z - Already present: nodejs
+2025-11-16T19:57:27Z - Already present: golang
+2025-11-16T19:57:27Z - Already present: clang
+2025-11-16T19:57:27Z - Already present: make
+2025-11-16T19:57:27Z - Already present: neovim
+2025-11-16T19:57:28Z - --- Installing Networking & Security Tools ---
+2025-11-16T19:57:28Z - Already present: openssh
+2025-11-16T19:57:28Z - Already present: net-tools
+2025-11-16T19:57:28Z - Installing: dnsutils
+2025-11-16T19:57:33Z - Already present: nmap
+2025-11-16T19:57:34Z - Installing: tcpdump
+2025-11-16T19:57:35Z - ERROR: tcpdump failed
+2025-11-16T19:57:35Z - Already present: termux-services
+2025-11-16T19:57:35Z - Installing: fail2ban
+2025-11-16T19:57:36Z - ERROR: fail2ban failed
+2025-11-16T19:57:36Z - Already present: cronie
+2025-11-16T20:04:04Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T20:04:04Z - Installing package groups...
+2025-11-16T20:04:04Z - Already present: termux-tools
+2025-11-16T20:04:04Z - Already present: proot-distro
+2025-11-16T20:04:04Z - Installing: tldr
+2025-11-16T20:04:05Z - ERROR: Failed to install tldr
+2025-11-16T20:04:06Z - Installing: man
+2025-11-16T20:04:07Z - Already present: htop
+2025-11-16T20:04:07Z - Already present: neofetch
+2025-11-16T20:04:07Z - Already present: fish
+2025-11-16T20:04:07Z - Already present: git
+2025-11-16T20:04:07Z - Already present: termux-api
+2025-11-16T20:04:07Z - Already present: python
+2025-11-16T20:04:07Z - Already present: nodejs
+2025-11-16T20:04:07Z - Already present: golang
+2025-11-16T20:04:07Z - Already present: clang
+2025-11-16T20:04:07Z - Already present: make
+2025-11-16T20:04:08Z - Already present: neovim
+2025-11-16T20:04:08Z - Already present: build-essential
+2025-11-16T20:04:08Z - Already present: openssh
+2025-11-16T20:04:08Z - Already present: net-tools
+2025-11-16T20:04:08Z - Already present: dnsutils
+2025-11-16T20:04:08Z - Already present: nmap
+2025-11-16T20:04:08Z - Installing: tcpdump
+2025-11-16T20:04:09Z - ERROR: Failed to install tcpdump
+2025-11-16T20:04:09Z - Aborting due to critical package failure: tcpdump
+2025-11-16T20:15:13Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T20:15:13Z - Installing package groups...
+2025-11-16T20:15:13Z - Already present: termux-tools
+2025-11-16T20:15:13Z - Already present: proot-distro
+2025-11-16T20:15:13Z - Installing: tldr
+2025-11-16T20:15:14Z - ERROR: Failed to install tldr
+2025-11-16T20:15:14Z - Installing: man
+2025-11-16T20:15:15Z - Already present: htop
+2025-11-16T20:15:15Z - Already present: neofetch
+2025-11-16T20:15:15Z - Already present: fish
+2025-11-16T20:15:15Z - Already present: git
+2025-11-16T20:15:16Z - Already present: termux-api
+2025-11-16T20:15:16Z - Already present: python
+2025-11-16T20:15:16Z - Already present: nodejs
+2025-11-16T20:15:16Z - Already present: golang
+2025-11-16T20:15:16Z - Already present: clang
+2025-11-16T20:15:16Z - Already present: make
+2025-11-16T20:15:16Z - Already present: neovim
+2025-11-16T20:15:16Z - Already present: build-essential
+2025-11-16T20:15:16Z - Already present: openssh
+2025-11-16T20:15:16Z - Already present: net-tools
+2025-11-16T20:15:16Z - Already present: dnsutils
+2025-11-16T20:15:16Z - Already present: nmap
+2025-11-16T20:15:16Z - Installing: tcpdump
+2025-11-16T20:15:17Z - ERROR: Failed to install tcpdump
+2025-11-16T20:15:17Z - Aborting due to critical package failure: tcpdump
+2025-11-16T20:15:31Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T20:15:31Z - Installing package groups...
+2025-11-16T20:15:31Z - Already present: termux-tools
+2025-11-16T20:15:31Z - Already present: proot-distro
+2025-11-16T20:15:31Z - Installing: tldr
+2025-11-16T20:15:32Z - ERROR: Failed to install tldr
+2025-11-16T20:15:32Z - Installing: man
+2025-11-16T20:15:33Z - Already present: htop
+2025-11-16T20:15:33Z - Already present: neofetch
+2025-11-16T20:15:34Z - Already present: fish
+2025-11-16T20:15:34Z - Already present: git
+2025-11-16T20:15:34Z - Already present: termux-api
+2025-11-16T20:15:34Z - Already present: python
+2025-11-16T20:15:34Z - Already present: nodejs
+2025-11-16T20:15:34Z - Already present: golang
+2025-11-16T20:15:34Z - Already present: clang
+2025-11-16T20:15:34Z - Already present: make
+2025-11-16T20:15:34Z - Already present: neovim
+2025-11-16T20:15:34Z - Already present: build-essential
+2025-11-16T20:15:34Z - Already present: openssh
+2025-11-16T20:15:34Z - Already present: net-tools
+2025-11-16T20:15:34Z - Already present: dnsutils
+2025-11-16T20:15:34Z - Already present: nmap
+2025-11-16T20:15:34Z - Installing: tcpdump
+2025-11-16T20:15:36Z - ERROR: Failed to install tcpdump
+2025-11-16T20:15:36Z - Aborting due to critical package failure: tcpdump
+2025-11-16T20:15:51Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T20:15:51Z - Installing package groups...
+2025-11-16T20:15:51Z - Already present: termux-tools
+2025-11-16T20:15:51Z - Already present: proot-distro
+2025-11-16T20:15:51Z - Installing: tldr
+2025-11-16T20:15:52Z - ERROR: Failed to install tldr
+2025-11-16T20:15:52Z - Installing: man
+2025-11-16T20:15:53Z - Already present: htop
+2025-11-16T20:15:54Z - Already present: neofetch
+2025-11-16T20:15:54Z - Already present: fish
+2025-11-16T20:15:54Z - Already present: git
+2025-11-16T20:15:54Z - Already present: termux-api
+2025-11-16T20:15:54Z - Already present: python
+2025-11-16T20:15:54Z - Already present: nodejs
+2025-11-16T20:15:54Z - Already present: golang
+2025-11-16T20:15:54Z - Already present: clang
+2025-11-16T20:15:54Z - Already present: make
+2025-11-16T20:15:54Z - Already present: neovim
+2025-11-16T20:15:54Z - Already present: build-essential
+2025-11-16T20:15:54Z - Already present: openssh
+2025-11-16T20:15:54Z - Already present: net-tools
+2025-11-16T20:15:54Z - Already present: dnsutils
+2025-11-16T20:15:54Z - Already present: nmap
+2025-11-16T20:15:55Z - Installing: tcpdump
+2025-11-16T20:15:56Z - ERROR: Failed to install tcpdump
+2025-11-16T20:15:56Z - Aborting due to critical package failure: tcpdump
+2025-11-16T20:16:05Z - Starting Termux advanced setup (arch=aarch64)
+2025-11-16T20:16:05Z - Installing package groups...
+2025-11-16T20:16:05Z - Already present: termux-tools
+2025-11-16T20:16:05Z - Already present: proot-distro
+2025-11-16T20:16:05Z - Installing: tldr
+2025-11-16T20:16:06Z - ERROR: Failed to install tldr
+2025-11-16T20:16:06Z - Installing: man
+2025-11-16T20:16:07Z - Already present: htop
+2025-11-16T20:16:07Z - Already present: neofetch
+2025-11-16T20:16:07Z - Already present: fish
+2025-11-16T20:16:07Z - Already present: git
+2025-11-16T20:16:08Z - Already present: termux-api
+2025-11-16T20:16:08Z - Already present: python
+2025-11-16T20:16:08Z - Already present: nodejs
+2025-11-16T20:16:08Z - Already present: golang
+2025-11-16T20:16:08Z - Already present: clang
+2025-11-16T20:16:08Z - Already present: make
+2025-11-16T20:16:08Z - Already present: neovim
+2025-11-16T20:16:08Z - Already present: build-essential
+2025-11-16T20:16:08Z - Already present: openssh
+2025-11-16T20:16:08Z - Already present: net-tools
+2025-11-16T20:16:08Z - Already present: dnsutils
+2025-11-16T20:16:08Z - Already present: nmap
+2025-11-16T20:16:08Z - Installing: tcpdump
+2025-11-16T20:16:09Z - ERROR: Failed to install tcpdump
+2025-11-16T20:16:09Z - Aborting due to critical package failure: tcpdump
+2025-11-16T20:25:18Z - --- 1. Setting up Dotfiles Structure ---
+2025-11-16T20:25:18Z - INFO: Creating placeholder dotfiles repo. Replace this block with git clone.
+2025-11-16T20:25:18Z - Creating necessary symbolic links (Idempotent)...
+(B[m[1m[31mWarning: CPU doesn't support 32-bit instructions, some software may not work.(B[m
+proot warning: can't sanitize binding "/proc/self/fd/1": No such file or directory
+Preconfiguring packages ...
+Selecting previously unselected package libip4tc2:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 10607 files and directories currently installed.)
+Preparing to unpack .../0-libip4tc2_1.8.11-2ubuntu2_arm64.deb ...
+Unpacking libip4tc2:arm64 (1.8.11-2ubuntu2) ...
+Selecting previously unselected package libip6tc2:arm64.
+Preparing to unpack .../1-libip6tc2_1.8.11-2ubuntu2_arm64.deb ...
+Unpacking libip6tc2:arm64 (1.8.11-2ubuntu2) ...
+Selecting previously unselected package libxtables12:arm64.
+Preparing to unpack .../2-libxtables12_1.8.11-2ubuntu2_arm64.deb ...
+Unpacking libxtables12:arm64 (1.8.11-2ubuntu2) ...
+Selecting previously unselected package libmnl0:arm64.
+Preparing to unpack .../3-libmnl0_1.0.5-3_arm64.deb ...
+Unpacking libmnl0:arm64 (1.0.5-3) ...
+Selecting previously unselected package libnfnetlink0:arm64.
+Preparing to unpack .../4-libnfnetlink0_1.0.2-3_arm64.deb ...
+Unpacking libnfnetlink0:arm64 (1.0.2-3) ...
+Selecting previously unselected package libnetfilter-conntrack3:arm64.
+Preparing to unpack .../5-libnetfilter-conntrack3_1.1.0-1_arm64.deb ...
+Unpacking libnetfilter-conntrack3:arm64 (1.1.0-1) ...
+Selecting previously unselected package libnftnl11:arm64.
+Preparing to unpack .../6-libnftnl11_1.3.0-1_arm64.deb ...
+Unpacking libnftnl11:arm64 (1.3.0-1) ...
+Selecting previously unselected package iptables.
+Preparing to unpack .../7-iptables_1.8.11-2ubuntu2_arm64.deb ...
+Unpacking iptables (1.8.11-2ubuntu2) ...
+Selecting previously unselected package netfilter-persistent.
+Preparing to unpack .../8-netfilter-persistent_1.0.23_all.deb ...
+Unpacking netfilter-persistent (1.0.23) ...
+Setting up libip4tc2:arm64 (1.8.11-2ubuntu2) ...
+Setting up libip6tc2:arm64 (1.8.11-2ubuntu2) ...
+Setting up libxtables12:arm64 (1.8.11-2ubuntu2) ...
+Setting up libmnl0:arm64 (1.0.5-3) ...
+Setting up libnfnetlink0:arm64 (1.0.2-3) ...
+Setting up libnetfilter-conntrack3:arm64 (1.1.0-1) ...
+Setting up libnftnl11:arm64 (1.3.0-1) ...
+Setting up iptables (1.8.11-2ubuntu2) ...
+update-alternatives: using /usr/sbin/iptables-legacy to provide /usr/sbin/iptables (iptables) in auto mode
+update-alternatives: using /usr/sbin/ip6tables-legacy to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+update-alternatives: using /usr/sbin/iptables-nft to provide /usr/sbin/iptables (iptables) in auto mode
+update-alternatives: using /usr/sbin/ip6tables-nft to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+update-alternatives: using /usr/sbin/arptables-nft to provide /usr/sbin/arptables (arptables) in auto mode
+update-alternatives: using /usr/sbin/ebtables-nft to provide /usr/sbin/ebtables (ebtables) in auto mode
+Selecting previously unselected package iptables-persistent.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 10864 files and directories currently installed.)
+Preparing to unpack .../iptables-persistent_1.0.23_all.deb ...
+Unpacking iptables-persistent (1.0.23) ...
+Selecting previously unselected package libedit2:arm64.
+Preparing to unpack .../libedit2_3.1-20250104-1build1_arm64.deb ...
+Unpacking libedit2:arm64 (3.1-20250104-1build1) ...
+Selecting previously unselected package libjansson4:arm64.
+Preparing to unpack .../libjansson4_2.14-2build3_arm64.deb ...
+Unpacking libjansson4:arm64 (2.14-2build3) ...
+Selecting previously unselected package libnftables1:arm64.
+Preparing to unpack .../libnftables1_1.1.5-1_arm64.deb ...
+Unpacking libnftables1:arm64 (1.1.5-1) ...
+Selecting previously unselected package nftables.
+Preparing to unpack .../nftables_1.1.5-1_arm64.deb ...
+Unpacking nftables (1.1.5-1) ...
+Setting up libedit2:arm64 (3.1-20250104-1build1) ...
+Setting up libjansson4:arm64 (2.14-2build3) ...
+Setting up netfilter-persistent (1.0.23) ...
+invoke-rc.d: could not determine current runlevel
+Created symlink '/etc/systemd/system/iptables.service' → '/usr/lib/systemd/system/netfilter-persistent.service'.
+Created symlink '/etc/systemd/system/ip6tables.service' → '/usr/lib/systemd/system/netfilter-persistent.service'.
+Created symlink '/etc/systemd/system/multi-user.target.wants/netfilter-persistent.service' → '/usr/lib/systemd/system/netfilter-persistent.service'.
+Setting up libnftables1:arm64 (1.1.5-1) ...
+Setting up nftables (1.1.5-1) ...
+Setting up iptables-persistent (1.0.23) ...
+iptables: Failed to initialize nft: Permission denied
+IPv4: Unable to save (table filter isn't available or module not loadable)
+ip6tables: Failed to initialize nft: Permission denied
+IPv6: Unable to save (table filter isn't available or module not loadable)
+Processing triggers for libc-bin (2.42-0ubuntu3) ...
+2025-11-16T20:54:59Z - Starting system preparation and package installation.
+2025-11-16T20:55:04Z - Already present: termux-tools
+2025-11-16T20:55:04Z - Already present: proot-distro
+2025-11-16T20:55:04Z - Installing: tldr
+2025-11-16T20:55:05Z - Install failed for tldr (attempt 1)
+2025-11-16T20:55:09Z - Install failed for tldr (attempt 2)
+2025-11-16T20:55:12Z - Install failed for tldr (attempt 3)
+2025-11-16T20:55:12Z - ERROR: Failed to install tldr after 3 attempts
+2025-11-16T20:55:12Z - Installing: man
+2025-11-16T20:55:13Z - Already present: htop
+2025-11-16T20:55:13Z - Already present: neofetch
+2025-11-16T20:55:14Z - Already present: fish
+2025-11-16T20:55:14Z - Already present: git
+2025-11-16T20:55:14Z - Already present: termux-api
+2025-11-16T20:55:14Z - Already present: python
+2025-11-16T20:55:14Z - Already present: nodejs
+2025-11-16T20:55:14Z - Already present: golang
+2025-11-16T20:55:14Z - Already present: clang
+2025-11-16T20:55:14Z - Already present: make
+2025-11-16T20:55:14Z - Already present: neovim
+2025-11-16T20:55:14Z - Already present: openssh
+2025-11-16T20:55:14Z - Already present: net-tools
+2025-11-16T20:55:14Z - Already present: dnsutils
+2025-11-16T20:55:14Z - Already present: nmap
+2025-11-16T20:55:15Z - Installing: tcpdump
+2025-11-16T20:55:16Z - Install failed for tcpdump (attempt 1)
+2025-11-16T20:55:19Z - Install failed for tcpdump (attempt 2)
+2025-11-16T20:55:22Z - Install failed for tcpdump (attempt 3)
+2025-11-16T20:55:22Z - ERROR: Failed to install tcpdump after 3 attempts
+2025-11-16T20:55:23Z - Aborting due to critical failure: tcpdump
+2025-11-16 21:04:23 - Ensuring root-repo is installed to find iptables...
+2025-11-16 21:04:36 - root-repo installed and package lists updated.
+2025-11-16 21:04:36 - Installing iptables...
+2025-11-16 21:04:41 - WARN: host iptables-save failed; skipping save
+2025-11-16 21:05:57 - 1. Running the IPTables user wrapper inside Proot (to set initial rules).

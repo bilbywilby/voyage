@@ -1,0 +1,28 @@
+[project]
+name = "recipe-card-generator"
+version = "0.1.0"
+description = "OCR-based recipe digitizer"
+requires-python = ">=3.8"
+dependencies = [
+    "pillow",
+    "pytesseract",
+    "opencv-python",
+    "numpy",
+    "jinja2"
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+recipe-gen = "recipe_gen.__main__:main"
+
+# Tool Configurations (for linting)
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.black]
+line-length = 88
+target-version = ['py38']

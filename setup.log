@@ -1,0 +1,161 @@
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m echo "[INFO] Starting setup at $(date)"
+[?2004l[INFO] Starting setup at Sun Feb  8 03:11:17 EST 2026
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m abort() {
+[?2004l[?2004h>   echo "[ERROR] $1"
+[?2004l[?2004h>   exit 1
+[?2004l[?2004h> }
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m command -v pkg >/dev/null || abort "Termux pkg not found"
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m pkg update -y
+[?2004lChecking availability of current mirror:
+[*] https://packages-cf.termux.dev/apt/termux-main: ok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Hit:1 https://packages-cf.termux.dev/apt/termux-main stable InRelease
+Hit:2 https://packages-cf.termux.dev/apt/termux-root root InRelease
+Reading package lists...
+Building dependency tree...
+Reading state information...
+84 packages can be upgraded. Run 'apt list --upgradable' to see them.
+W: Target Packages (main/binary-aarch64/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-aarch64/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m pkg install -y \
+[?2004l[?2004h>   nodejs \
+[?2004l[?2004h>   npm \
+[?2004l[?2004h>   git \
+[?2004l[?2004h>   nano \
+[?2004l[?2004h>   libicu \
+[?2004l[?2004h>   tmux || abort "Package installation failed"
+[?2004lChecking availability of current mirror:
+[*] https://packages-cf.termux.dev/apt/termux-main: ok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nodejs is already the newest version (25.3.0-1).
+npm is already the newest version (11.9.0).
+npm set to manually installed.
+git is already the newest version (2.53.0).
+nano is already the newest version (8.7.1).
+libicu is already the newest version (78.2).
+libicu set to manually installed.
+The following NEW packages will be installed:
+  tmux
+0 upgraded, 1 newly installed, 0 to remove and 84 not upgraded.
+Need to get 363 kB of archives.
+After this operation, 1130 kB of additional disk space will be used.
+Get:1 https://packages-cf.termux.dev/apt/termux-main stable/main aarch64 tmux aarch64 3.6a [363 kB]
+Fetched 363 kB in 1s (333 kB/s)
+
+echo "[INFO] Node version:"
+node -v || abort "Node missing"
+
+echo "[INFO] ICU linkage check:"
+node -p "process.versions.icu" || abort "ICU not detected"
+
+PROJECT_DIR="$HOME/myapp"
+[ -d "$PROJECT_DIR" ] || abort "Project directory missing: $PROJECT_DIR"
+cd "$PROJECT_DIR"
+
+echo "[INFO] Installing dependencies"
+npm ci --no-audit --no-fund
+
+echo "[INFO] Running app setup (if defined)"
+npm run setup --if-present
+
+echo "[INFO] Setup completed successfully"
+Selecting previously unselected package tmux.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 50879 files and directories currently installed.)
+Preparing to unpack .../archives/tmux_3.6a_aarch64.deb ...
+Unpacking tmux (3.6a) ...
+Setting up tmux (3.6a) ...
+Processing triggers for mandoc (1.14.6-6) ...
+[?2004h[0;32m~[0m [0;97m$[0m [K[0;32m~[0m [0;97m$[0m [K[0;32m~[0m [0;97m$[0m #!/usr/bin/env sh
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m while true; do
+[?2004l[?2004h>   echo "[INFO] Starting app at $(date)"
+[?2004l[?2004h>   npm run start
+[?2004l[?2004h>   echo "[WARN] App exited. Restarting in 5s..."
+[?2004l[?2004h>   sleep 5
+[?2004l[?2004h> done
+[?2004l[INFO] Starting app at Sun Feb  8 03:15:59 EST 2026
+
+> project@1.0.0 start
+> node index.js
+
+listening on 3000
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m echo "[INFO] Starting setup at $(date)"
+[?2004l[INFO] Starting setup at Sun Feb  8 03:18:32 EST 2026
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m abort() {
+[?2004l[?2004h>   echo "[ERROR] $1"
+[?2004l[?2004h>   exit 1
+[?2004l[?2004h> }
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m command -v pkg >/dev/null || abort "Termux pkg not found"
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m pkg update -y
+[?2004lChecking availability of current mirror:
+[*] https://packages-cf.termux.dev/apt/termux-main: ok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Get:1 https://packages-cf.termux.dev/apt/termux-main stable InRelease [14.0 kB]
+Hit:2 https://packages-cf.termux.dev/apt/termux-root root InRelease
+Get:3 https://packages-cf.termux.dev/apt/termux-main stable/main aarch64 Packages [545 kB]
+Fetched 559 kB in 3s (164 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+84 packages can be upgraded. Run 'apt list --upgradable' to see them.
+W: Target Packages (main/binary-aarch64/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-aarch64/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /data/data/com.termux/files/usr/etc/apt/sources.list:1 and /data/data/com.termux/files/usr/etc/apt/sources.list.d/main.list:1
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m pkg install -y \
+[?2004l[?2004h>   nodejs \
+[?2004l[?2004h>   npm \
+[?2004l[?2004h>   git \
+[?2004l[?2004h>   nano \
+[?2004l[?2004h>   libicu \
+[?2004l[?2004h>   tmux || abort "Package installation failed"
+[?2004lChecking availability of current mirror:
+[*] https://packages-cf.termux.dev/apt/termux-main: ok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+nodejs is already the newest version (25.3.0-1).
+npm is already the newest version (11.9.0).
+git is already the newest version (2.53.0).
+nano is already the newest version (8.7.1).
+libicu is already the newest version (78.2).
+tmux is already the newest version (3.6a).
+0 upgraded, 0 newly installed, 0 to remove and 84 not upgraded.
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m echo "[INFO] Node version:"
+[?2004l[INFO] Node version:
+[?2004h[0;32m~[0m [0;97m$[0m node -v || abort "Node missing"
+[?2004lv25.3.0
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m echo "[INFO] ICU linkage check:"
+[?2004l[INFO] ICU linkage check:
+[?2004h[0;32m~[0m [0;97m$[0m node -p "process.versions.icu" || abort "ICU not detected"
+[?2004l78.2
+[?2004h[0;32m~[0m [0;97m$[0m 
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m PROJECT_DIR="$HOME/myapp"
+[?2004l[?2004h[0;32m~[0m [0;97m$[0m [ -d "$PROJECT_DIR" ] || abort "Project directory missing: $PROJECT_DIR"
+[?2004l[ERROR] Project directory missing: /data/data/com.termux/files/home/myapp
+logout

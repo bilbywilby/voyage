@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# --- FUNCTION DEFINITION ---
+print_greeting() {
+    local NAME=$1 # Functions use $1, $2, etc., for their own arguments
+
+    echo "====================================="
+    echo "🚀 Running the script for $NAME"
+    echo "====================================="
+}
+# ---------------------------
+
+# Check for argument (same as before)
+if [ -z "$1" ]; then
+    echo "Error: Please provide your name as a command line argument."
+    echo "Usage: ./first_script.sh <name>"
+    exit 1
+fi
+
+# CALL the function with the first command line argument
+print_greeting "$1"
+
+echo "Listing files in the current folder:"
+ls -lh
+exit
+
+clear
+^x
+
+
