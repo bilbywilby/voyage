@@ -1,67 +1,3 @@
-system_prep
-#!/usr/bin/env bash
-set -euo pipefail
-PREFIX="/data/data/com.termux/files/usr"
-DISTRO="ubuntu"
-PROOT="$PREFIX/bin/proot-distro"
-SAVE_PATH="/etc/iptables/rules.v4"
-LOG="$HOME/.termux-setup.log"
-log(){ echo "$(date -u '+%Y-%m-%d %H:%M:%S') - $*"; }
-# Save host iptables into a temp and copy into proot's /etc/iptables/rules.v4
-save_to_proot(){   local IPTABLES_CMD="iptables-save";   if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then     IPTABLES_CMD="iptables-legacy";     if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then       log "WARN: Neither iptables-save nor iptables-legacy found on host; skipping save";       return;     fi;   fi;    TMP="$(mktemp)";   if $IPTABLES_CMD >"$TMP" 2>/dev/null; then     log "Saved host iptables to $TMP";     $PROOT login "$DISTRO" -- bash -lc "mkdir -p $(dirname "$SAVE_PATH") && cat > '$SAVE_PATH' " < "$TMP"       && log "Copied rules into proot:$SAVE_PATH" || log "WARN: failed to write rules into proot";   else     log "WARN: host $IPTABLES_CMD failed; skipping save";   fi;   rm -f "$TMP"; }
-# Restore inside proot if possible
-restore_in_proot(){   log "Attempting restore inside proot:$DISTRO";   local IPTABLES_CMD="iptables-restore";   if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then     IPTABLES_CMD="iptables-legacy-restore";     if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then       log "WARN: Neither iptables-restore nor iptables-legacy-restore found inside proot; skipping restore";       return;     fi;   fi;    $PROOT login "$DISTRO" -- bash -lc "if [ -f '$SAVE_PATH' ]; then $IPTABLES_CMD < '$SAVE_PATH' && echo 'restored'; else echo 'no-restore-possible'; fi"; }
-save_to_proot
-restore_in_proot
-#!/usr/bin/env bash
-set -euo pipefail
-PREFIX="/data/data/com.termux/files/usr"
-DISTRO="ubuntu"
-PROOT="$PREFIX/bin/proot-distro"
-SAVE_PATH="/etc/iptables/rules.v4"
-LOG="$HOME/.termux-setup.log"
-log(){ echo "$(date -u '+%Y-%m-%d %H:%M:%S') - $*"; }
-# Install iptables if not already installed
-install_iptables(){   if ! pkg list-installed | grep -q "^iptables"; then     pkg install -y iptables;   fi; }
-# Save host iptables into a temp and copy into proot's /etc/iptables/rules.v4
-save_to_proot(){   install_iptables;    local IPTABLES_CMD="iptables-save";   if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then     IPTABLES_CMD="iptables-legacy";     if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then       log "WARN: Neither iptables-save nor iptables-legacy found on host; skipping save";       return;     fi;   fi;    TMP="$(mktemp)";   if $IPTABLES_CMD >"$TMP" 2>/dev/null; then     log "Saved host iptables to $TMP";     $PROOT login "$DISTRO" -- bash -lc "mkdir -p $(dirname "$SAVE_PATH") && cat > '$SAVE_PATH' " < "$TMP"       && log "Copied rules into proot:$SAVE_PATH" || log "WARN: failed to write rules into proot";   else     log "WARN: host $IPTABLES_CMD failed; skipping save";   fi;   rm -f "$TMP"; }
-# Restore inside proot if possible
-restore_in_proot(){   log "Attempting restore inside proot:$DISTRO";   local IPTABLES_CMD="iptables-restore";   if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then     IPTABLES_CMD="iptables-legacy-restore";     if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then       log "WARN: Neither iptables-restore nor iptables-legacy-restore found inside proot; skipping restore";       return;     fi;   fi;    $PROOT login "$DISTRO" -- bash -lc "if [ -f '$SAVE_PATH' ]; then $IPTABLES_CMD < '$SAVE_PATH' && echo 'restored'; else echo 'no-restore-possible'; fi"; }
-save_to_proot
-This is a perfect example of the dependency trap common in Termux advanced scripting: trying to install a package (iptables) that is available in a repository that hasn't been explicitly enabled (the root-repo or a similar dedicated source).
-The script failed in the second attempt because pkg install -y iptables could not find the package.
-🛑 Execution Failure Diagnosis
-The script aborted due to the set -euo pipefail command when pkg install -y iptables returned a non-zero exit code (specifically, Exit Code 100, which is the standard APT error for "Unable to locate package").
-🛠️ Updated Persistence Script (Root Repo Integration)
-To fix this, the script must first idempotently ensure the Root Repository is installed, which will make the iptables package available.
-Here is the final, corrected version of the persistence functions, including a new install_root_repo function and necessary checks:
-#!/usr/bin/env bash
-# IPTABLES MANAGER: Final Fix for Root Repo Dependency
-set -euo pipefail
-PREFIX="/data/data/com.termux/files/usr"
-DISTRO="ubuntu"
-PROOT="$PREFIX/bin/proot-distro"
-SAVE_PATH="/etc/iptables/rules.v4"
-LOG="$HOME/.termux-setup.log"
-log(){ echo "$(date -u '+%Y-%m-%d %H:%M:%S') - $*" | tee -a "$LOG"; }
-# --- NEW: Ensure Root Repository is Enabled ---
-install_root_repo() {   log "Ensuring root-repo is installed to find iptables...";   if ! dpkg -l | grep -q 'root-repo'; then     pkg install -y root-repo || { log "ERROR: Failed to install root-repo. Check internet connection."; exit 1; };   fi
-  pkg update -y >/dev/null 2>&1;   log "root-repo installed and package lists updated."; }
-# --- Install iptables (Now safe after root-repo check) ---
-install_iptables(){   install_root_repo;   if ! pkg list-installed | grep -q "^iptables"; then     log "Installing iptables...";     pkg install -y iptables || { log "ERROR: Failed to install iptables."; exit 1; };   else     log "iptables already installed.";   fi; }
-# --- Save host iptables into a temp and copy into proot's /etc/iptables/rules.v4 ---
-save_to_proot(){
-  install_iptables;    local IPTABLES_CMD="iptables-save";   if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then     IPTABLES_CMD="iptables-legacy";     if ! command -v "$IPTABLES_CMD" >/dev/null 2>&1; then       log "WARN: Neither iptables-save nor iptables-legacy found on host; skipping save";       return;     fi;   fi;    TMP="$(mktemp)";   if $IPTABLES_CMD >"$TMP" 2>/dev/null; then     log "Saved host iptables to $TMP";     $PROOT login "$DISTRO" -- bash -lc "mkdir -p $(dirname "$SAVE_PATH") && cat > '$SAVE_PATH' " < "$TMP"       && log "Copied rules into proot:$SAVE_PATH" || log "WARN: failed to write rules into proot";   else     log "WARN: host $IPTABLES_CMD failed; skipping save";   fi;   rm -f "$TMP"; }
-# --- Restore inside proot if possible ---
-restore_in_proot(){   log "Attempting restore inside proot:$DISTRO";   local IPTABLES_CMD="iptables-restore";   if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then     IPTABLES_CMD="iptables-restore-legacy";     if ! $PROOT login "$DISTRO" -- bash -lc "command -v $IPTABLES_CMD >/dev/null 2>&1"; then       log "WARN: Neither iptables-restore nor iptables-restore-legacy found inside proot; skipping restore";       return;     fi;   fi; 
-  $PROOT login "$DISTRO" -- bash -lc "if [ -f '$SAVE_PATH' ]; then $IPTABLES_CMD < '$SAVE_PATH' && echo 'SUCCESS: restored'; else echo 'no-restore-possible'; fi"; }
-# --- EXECUTION ---
-save_to_proot
-# Assuming the shell session is still active and functions are defined.
-# The previous script created the IPTables wrapper (Step 4 of the main script).
-# 1. DEFINE/RUN THE USER WRAPPER (This is where the rules are actually created)
-# Note: This is an illustrative command, as the wrapper needs to be run in a privileged context.
-# We will use the Proot Distro to run the wrapper.
 log "1. Running the IPTables user wrapper inside Proot (to set initial rules)."
 $PROOT login "$DISTRO" -- bash -lc "
   # Install the iptables package inside the distro if it's not already there
@@ -498,3 +434,67 @@ cd adxray-pwa
 git init && git add . && git commit -m "AdXRay PWA"
 gh repo create adxray --public --push
 # Then enable Pages: Settings → Pages → Deploy from main
+git init && git add . && git commit -m "initial"
+gh repo create voyage --public --push
+git init && git add . && git commit -m "initial"
+gh repo create voyage --public --push
+pkh install gh
+pkg install gh
+git init && git add . && git commit -m "initial"
+gh repo create voyage --public --push
+gh auth login
+git init && git add . && git commit -m "initial"
+gh repo create voyage --public --push
+# 1. Set your git identity
+git config --global user.email "you@example.com"
+git config --global user.name "bilbywilby"
+# 2. Navigate to the voyage folder first
+cd ~/voyage
+# 3. Commit
+git add . && git commit -m "initial"
+# 4. Create repo and push (needs --source flag)
+gh repo create voyage --public --source=. --push
+cat >> .gitignore << 'EOF'
+.bun/
+.cache/
+.opencode/bin/
+EOF
+
+# Install if needed
+pip install git-filter-repo
+# Remove the offending paths from all history
+git filter-repo --path .opencode/bin/opencode --invert-paths
+git filter-repo --path .bun/bin/bun --invert-paths
+git filter-repo --path .cache/pip --invert-paths
+git remote add origin https://github.com/bilbywilby/voyage.git
+# Remove the offending paths from all history
+git filter-repo --path .opencode/bin/opencode --invert-paths
+git filter-repo --path .bun/bin/bun --invert-paths
+git filter-repo --path .cache/pip --invert-paths
+git push --force origin master
+git filter-repo --force --path .opencode/bin/opencode --invert-paths
+git filter-repo --force --path .bun/bin/bun --invert-paths
+git filter-repo --force --path .cache/pip --invert-paths
+gh auth login
+# Set git identity
+git config --global user.email "bilbywilby@users.noreply.github.com"
+git config --global user.name "bilbywilby"
+# Go into the voyage folder
+cd ~/voyage
+# Commit and push
+git add .
+git commit -m "initial"
+gh repo create voyage --public --source=. --push
+voyager2
+clear
+cd ~/voyage
+git init
+git config user.email "bilbywilby@users.noreply.github.com"
+git config user.name "bilbywilby"
+git add .
+git commit -m "initial"
+git remote add origin git@github.com:bilbywilby/voyage.git
+git push -u origin main
+clear
+restart
+exit
